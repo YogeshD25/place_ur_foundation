@@ -1,0 +1,24 @@
+#server:
+#  port: 9229
+#  error:
+#    include:
+#      -message: always
+
+#jwt:
+#  secret: sceretkey123
+#
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://
+#    username:
+#    password:
+#    hikari:
+#      maximum:-pool-size:jpa: 2
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: "true"
+#    properties:
+#        hibernate:
+#          dialect: org.hibernate.dialect.PostgreSQL9Dialect
+#          format_sql: "true"
