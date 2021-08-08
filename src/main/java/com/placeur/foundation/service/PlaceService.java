@@ -14,7 +14,7 @@ import java.util.List;
 public class PlaceService {
 
 
-    private PlaceRepository placeRepository;
+    public PlaceRepository placeRepository;
 
     @Autowired
     public PlaceService(PlaceRepository placeRepository) {

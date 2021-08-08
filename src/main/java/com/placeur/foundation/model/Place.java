@@ -38,5 +38,7 @@ public class Place {
     private String placeDescription;
     @Column
     private String placeImageUrl;
+    @Column
+    private Float placeRating;
 
 }

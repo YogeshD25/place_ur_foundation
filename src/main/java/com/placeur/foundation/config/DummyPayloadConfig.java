@@ -23,10 +23,15 @@ public class DummyPayloadConfig {
 
             //Added Dummy Places
             List<Place> placeArrayList = new ArrayList<>();
-            placeArrayList.add(new Place(111, "Mc Donalds",1L,"91","92",
-                    "Best place","https://picsum.photos/seed/picsum/200/300"));
-            placeArrayList.add(new Place(1112, "Burger Singh",1L,"91","92",
-                    "Best place","https://picsum.photos/seed/picsum/200/300"));
+            placeArrayList.add(new Place(111, "Raddison Blu",1L,"91","92",
+                    "Best place","https://i.ibb.co/4FfPXZk/raddison.jpg",4.4f));
+            placeArrayList.add(new Place(1112, "Ovenstory Pizza",1L,"91","92",
+                    "Best place","https://i.ibb.co/0sT6rL1/ovenstory.jpg",3.7f));
+            placeArrayList.add(new Place(1113, "Subway",1L,"91","92",
+                    "Best place","https://i.ibb.co/t4K4T20/subway.jpg",2.7f));
+            placeArrayList.add(new Place(1114, "BBQ",1L,"91","92",
+                    "Best place","https://i.ibb.co/tZdZhfH/bbq.jpg",3.2f));
+
 
             placeRepository.saveAll(placeArrayList);
 
@@ -34,17 +39,17 @@ public class DummyPayloadConfig {
             //Added Dummy Categories
             List<Category> categoryArrayList = new ArrayList<>();
             categoryArrayList.add(new Category(1L, "Restaurant",
-                    "https://picsum.photos/200/300?grayscale"));
+                    "https://i.ibb.co/GQvBPXK/Top-view-table-full-of-food-Sharing-dinner-with-friends.jpg"));
             categoryArrayList.add(new Category(2L, "Coffee Shops",
-                    "https://picsum.photos/200/300?grayscale"));
+                    "https://i.ibb.co/41kFQyM/Coffee-Shops.jpg"));
             categoryArrayList.add(new Category(3L, "Shopping",
-                    "https://picsum.photos/200/300?grayscale"));
+                    "https://i.ibb.co/vhkg5tb/Shopping.jpg"));
             categoryArrayList.add(new Category(4L, "Pubs",
-                    "https://picsum.photos/200/300?grayscale"));
+                    "https://i.ibb.co/T13FsKc/pubs.jpg"));
             categoryArrayList.add(new Category(5L, "Bars",
-                    "https://picsum.photos/200/300?grayscale"));
+                    "https://i.ibb.co/jvgJBmk/bars.jpg"));
             categoryArrayList.add(new Category(6L, "Hair Salons",
-                    "https://picsum.photos/200/300?grayscale"));
+                    "https://i.ibb.co/Prs7cTY/hairsalon.jpg"));
             categoryRepository.saveAll(categoryArrayList);
         };
     }

@@ -19,6 +19,6 @@ public class Category {
     @Column
     private String categoryName;
     @Column
-    private String placeImageUrl;
+    private String categoryImageUrl;
 
 }
