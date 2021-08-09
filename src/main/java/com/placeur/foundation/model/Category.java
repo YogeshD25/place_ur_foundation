@@ -20,5 +20,7 @@ public class Category {
     private String categoryName;
     @Column
     private String categoryImageUrl;
+    @Column
+    private String categorySecondaryImageUrl;
 
 }

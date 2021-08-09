@@ -39,17 +39,17 @@ public class DummyPayloadConfig {
             //Added Dummy Categories
             List<Category> categoryArrayList = new ArrayList<>();
             categoryArrayList.add(new Category(1L, "Restaurant",
-                    "https://i.ibb.co/GQvBPXK/Top-view-table-full-of-food-Sharing-dinner-with-friends.jpg"));
+                    "https://i.ibb.co/GQvBPXK/Top-view-table-full-of-food-Sharing-dinner-with-friends.jpg","https://i.ibb.co/GQvBPXK/Top-view-table-full-of-food-Sharing-dinner-with-friends.jpg"));
             categoryArrayList.add(new Category(2L, "Coffee Shops",
-                    "https://i.ibb.co/41kFQyM/Coffee-Shops.jpg"));
+                    "https://i.ibb.co/41kFQyM/Coffee-Shops.jpg","https://i.ibb.co/41kFQyM/Coffee-Shops.jpg"));
             categoryArrayList.add(new Category(3L, "Shopping",
-                    "https://i.ibb.co/vhkg5tb/Shopping.jpg"));
+                    "https://i.ibb.co/vhkg5tb/Shopping.jpg","https://i.ibb.co/vhkg5tb/Shopping.jpg"));
             categoryArrayList.add(new Category(4L, "Pubs",
-                    "https://i.ibb.co/T13FsKc/pubs.jpg"));
+                    "https://i.ibb.co/T13FsKc/pubs.jpg","https://i.ibb.co/T13FsKc/pubs.jpg"));
             categoryArrayList.add(new Category(5L, "Bars",
-                    "https://i.ibb.co/jvgJBmk/bars.jpg"));
+                    "https://i.ibb.co/jvgJBmk/bars.jpg","https://i.ibb.co/jvgJBmk/bars.jpg"));
             categoryArrayList.add(new Category(6L, "Hair Salons",
-                    "https://i.ibb.co/Prs7cTY/hairsalon.jpg"));
+                    "https://i.ibb.co/Prs7cTY/hairsalon.jpg","https://i.ibb.co/Prs7cTY/hairsalon.jpg"));
             categoryRepository.saveAll(categoryArrayList);
         };
     }
