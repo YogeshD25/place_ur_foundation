@@ -35,6 +35,16 @@ public class PlaceController {
         return placeService.getAllPlace();
     }
 
+    @GetMapping(path = "/byGeoFence")
+    public List<Place> getPlaceUnderLocation(
+            @RequestParam double placeLat,
+            @RequestParam double placeLong,
+            @RequestParam int placeProximity
+    ) {
+        log.info("Inside Place Controller in getPlaceUnderLocation");
+        return placeService.getPlacesBasedOnLocation(placeLat, placeLong, placeProximity);
+    }
+
     @PostMapping
     public void savePlace(@RequestBody Place place) {
         log.info("Inside Place Controller in savePlace");
