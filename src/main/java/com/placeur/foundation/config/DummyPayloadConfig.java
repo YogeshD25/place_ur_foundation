@@ -3,9 +3,13 @@ package com.placeur.foundation.config;
 
 import com.placeur.foundation.model.Category;
 import com.placeur.foundation.model.Place;
+import com.placeur.foundation.model.UserDto;
+import com.placeur.foundation.model.UserProfile;
 import com.placeur.foundation.repository.CategoryRepository;
 import com.placeur.foundation.repository.PlaceRepository;
 import com.placeur.foundation.service.PlaceService;
+import com.placeur.foundation.service.UserService;
+import org.apache.catalina.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +23,8 @@ public class DummyPayloadConfig {
     @Bean
     CommandLineRunner commandLineRunner(PlaceRepository placeRepository,
                                         CategoryRepository categoryRepository,
-                                        PlaceService placeService) {
+                                        PlaceService placeService,
+                                        UserService userService) {
         return args -> {
 
 
@@ -57,6 +62,13 @@ public class DummyPayloadConfig {
             categoryArrayList.add(new Category(6L, "Hair Salons",
                     "https://i.ibb.co/cNNNhsd/hairsalon.jpg", "https://i.ibb.co/VLLGD70/hair.png"));
             categoryRepository.saveAll(categoryArrayList);
+
+
+            List<UserDto> userList = new ArrayList<>();
+            userList.add(new UserDto("yogesh", "123", "123456", "yogesh@gmail.com"));
+            userList.add(new UserDto("vineet", "123", "1234567890", "vineet@gmail.com"));
+            userService.save(userList.get(0));
+            userService.save(userList.get(1));
         };
     }
 }

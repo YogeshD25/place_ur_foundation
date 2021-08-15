@@ -14,7 +14,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class UserProfile {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
+    @JsonIgnore
     private long id;
     @Column
     private String username;
