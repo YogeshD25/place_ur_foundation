@@ -35,9 +35,9 @@ public class DummyPayloadConfig {
                     "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 4.4f));
             placeArrayList.add(new Place(1112, "Ovenstory Pizza", 1L, 20.104710, 77.132935,
                     "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f));
-            placeArrayList.add(new Place(1113, "Subway", 1L, 20.710391, 77.062419,
+            placeArrayList.add(new Place(1113, "Subway", 1L, 21.1441, 79.0882,
                     "Best place", "https://i.ibb.co/CKmzxDv/restaurent-3.png", "", 2.7f));
-            placeArrayList.add(new Place(1114, "BBQ", 1L, 21.004522, 74.349907,
+            placeArrayList.add(new Place(1114, "BBQ", 1L, 21.1341, 79.0782,
                     "Best place", "https://i.ibb.co/nLDLJrH/restaurent-4.png", "", 3.2f));
 
 
