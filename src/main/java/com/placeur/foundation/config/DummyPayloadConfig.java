@@ -4,12 +4,10 @@ package com.placeur.foundation.config;
 import com.placeur.foundation.model.Category;
 import com.placeur.foundation.model.Place;
 import com.placeur.foundation.model.UserDto;
-import com.placeur.foundation.model.UserProfile;
 import com.placeur.foundation.repository.CategoryRepository;
 import com.placeur.foundation.repository.PlaceRepository;
 import com.placeur.foundation.service.PlaceService;
 import com.placeur.foundation.service.UserService;
-import org.apache.catalina.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,14 +29,14 @@ public class DummyPayloadConfig {
             //Added Dummy Places
             List<Place> placeArrayList = new ArrayList<>();
 
-            placeArrayList.add(new Place(111, "Raddison Blu", 1L, 20.104549, 77.132677,
-                    "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 4.4f));
-            placeArrayList.add(new Place(1112, "Ovenstory Pizza", 1L, 20.104710, 77.132935,
-                    "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f));
-            placeArrayList.add(new Place(1113, "Subway", 1L, 21.1441, 79.0882,
-                    "Best place", "https://i.ibb.co/CKmzxDv/restaurent-3.png", "", 2.7f));
-            placeArrayList.add(new Place(1114, "BBQ", 1L, 21.1341, 79.0782,
-                    "Best place", "https://i.ibb.co/nLDLJrH/restaurent-4.png", "", 3.2f));
+            placeArrayList.add(new Place(111, "Raddison Blu", 1L,"Restaurant", 20.104549, 77.132677,
+                    "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 4.4f,"Washim"));
+            placeArrayList.add(new Place(1112, "Ovenstory Pizza", 1L,"Restaurant", 20.104710, 77.132935,
+                    "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
+            placeArrayList.add(new Place(1113, "Subway", 1L,"Restaurant", 21.1441, 79.0882,
+                    "Best place", "https://i.ibb.co/CKmzxDv/restaurent-3.png", "", 2.7f,"Nagpur"));
+            placeArrayList.add(new Place(1114, "BBQ", 1L,"Restaurant", 21.1341, 79.0782,
+                    "Best place", "https://i.ibb.co/nLDLJrH/restaurent-4.png", "", 3.2f,"Nagpur"));
 
 
             for (Place place : placeArrayList) {

@@ -31,6 +31,8 @@ public class Place {
     @Column
     private long categoryId;
     @Column
+    private String categoryName;
+    @Column
     private double placeLat;
     @Column
     private double placeLong;
@@ -42,5 +44,7 @@ public class Place {
     private String geoHash;
     @Column
     private float placeRating;
+    @Column
+    private String placeCity;
 
 }
