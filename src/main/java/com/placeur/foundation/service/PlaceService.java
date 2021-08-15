@@ -24,7 +24,7 @@ public class PlaceService {
 
     public void savePlace(Place place) {
         log.info("Inside Place Service for Saving place");
-        GeoHash hash = GeoHash.withBitPrecision(place.getPlaceLat(), place.getPlaceLong(), 30);
+        GeoHash hash = GeoHash.withBitPrecision(place.getPlaceLat(), place.getPlaceLong(), 25);
         place.setGeoHash(hash.toBase32());
         placeRepository.save(place);
     }
@@ -59,7 +59,7 @@ public class PlaceService {
 
     public List<Place> getPlacesBasedOnLocation(double placeLat, double placeLong, int placeProximity) {
 
-        GeoHash hash = GeoHash.withBitPrecision(placeLat, placeLong, 30);
+        GeoHash hash = GeoHash.withBitPrecision(placeLat, placeLong, 25);
         GeoHash[] geoHashes = hash.getAdjacent();
 
         log.info("Values " + geoHashes[0].toBase32() + "\n" +
