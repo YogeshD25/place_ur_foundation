@@ -34,17 +34,17 @@ public class DummyPayloadConfig {
             placeArrayList.add(new Place(1112, "Ovenstory Pizza", 1L,"Restaurant", 20.104710, 77.132935,
                     "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
 
-            placeArrayList.add(new Place(111, "Jackson Blu", 1L,"Restaurant", 20.105549, 77.132677,
+            placeArrayList.add(new Place(113, "Jackson Blu", 1L,"Restaurant", 20.105549, 77.132677,
                     "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 2.4f,"Washim"));
-            placeArrayList.add(new Place(1112, "CrazyStory Hut", 1L,"Restaurant", 20.104810, 77.132935,
+            placeArrayList.add(new Place(1114, "CrazyStory Hut", 1L,"Restaurant", 20.104810, 77.132935,
                     "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.2f,"Washim"));
-            placeArrayList.add(new Place(111, "Raddison Blu", 1L,"Restaurant", 20.104519, 77.132677,
+            placeArrayList.add(new Place(1115, "Raddison Blu", 1L,"Restaurant", 20.104519, 77.132677,
                     "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 4.9f,"Washim"));
-            placeArrayList.add(new Place(1112, "Devil Pizza", 1L,"Restaurant", 20.104700, 77.132935,
+            placeArrayList.add(new Place(1116, "Devil Pizza", 1L,"Restaurant", 20.104700, 77.132935,
                     "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
-            placeArrayList.add(new Place(111, "Mac D ", 1L,"Restaurant", 20.104529, 77.132677,
+            placeArrayList.add(new Place(1117, "Mac D ", 1L,"Restaurant", 20.104529, 77.132677,
                     "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 1.4f,"Washim"));
-            placeArrayList.add(new Place(1112, "Food Carter", 1L,"Restaurant", 20.104220, 77.132935,
+            placeArrayList.add(new Place(1118, "Food Carter", 1L,"Restaurant", 20.104220, 77.132935,
                     "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
 
             placeArrayList.add(new Place(1113, "Subway", 1L,"Restaurant", 21.1441, 79.0882,
