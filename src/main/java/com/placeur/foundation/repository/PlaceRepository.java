@@ -41,4 +41,17 @@ public interface PlaceRepository extends JpaRepository<Place,Long> {
             @Param("eight") String eight,
             @Param("nine") String nine);
 
+    @Query("SELECT p FROM Place p WHERE p.geoHash IN(:one,:two,:three,:four,:five,:six,:seven,:eight,:nine)")
+    Page<Place> findRealtyClustersWithinGeoHashByPaging(
+            @Param("one") String one,
+            @Param("two") String two,
+            @Param("three") String three,
+            @Param("four") String four,
+            @Param("five") String five,
+            @Param("six") String six,
+            @Param("seven") String seven,
+            @Param("eight") String eight,
+            @Param("nine") String nine,
+            Pageable pageable);
+
 }

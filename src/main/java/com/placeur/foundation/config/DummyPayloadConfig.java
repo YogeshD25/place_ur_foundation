@@ -52,6 +52,19 @@ public class DummyPayloadConfig {
             placeArrayList.add(new Place(1114, "BBQ", 1L,"Restaurant", 21.1341, 79.0782,
                     "Best place", "https://i.ibb.co/nLDLJrH/restaurent-4.png", "", 3.2f,"Nagpur"));
 
+            placeArrayList.add(new Place(1113, "Subway Nag", 1L,"Restaurant", 21.1451, 79.0862,
+                    "Best place", "https://i.ibb.co/CKmzxDv/restaurent-3.png", "", 4.7f,"Nagpur"));
+            placeArrayList.add(new Place(1114, "BBQ Nag", 1L,"Restaurant", 21.1345, 79.0783,
+                    "Best place", "https://i.ibb.co/nLDLJrH/restaurent-4.png", "", 1.2f,"Nagpur"));
+            placeArrayList.add(new Place(1113, "Subway Nag 2", 1L,"Restaurant", 21.1421, 79.0892,
+                    "Best place", "https://i.ibb.co/CKmzxDv/restaurent-3.png", "", 2.7f,"Nagpur"));
+            placeArrayList.add(new Place(1114, "BBQ Nag 2", 1L,"Restaurant", 21.1347, 79.0782,
+                    "Best place", "https://i.ibb.co/nLDLJrH/restaurent-4.png", "", 3.2f,"Nagpur"));
+            placeArrayList.add(new Place(1113, "Subway Nag 3", 1L,"Restaurant", 21.1443, 79.0842,
+                    "Best place", "https://i.ibb.co/CKmzxDv/restaurent-3.png", "", 2.7f,"Nagpur"));
+            placeArrayList.add(new Place(1114, "BBQ Nag 3", 1L,"Restaurant", 21.1342, 79.0762,
+                    "Best place", "https://i.ibb.co/nLDLJrH/restaurent-4.png", "", 3.2f,"Nagpur"));
+
 
             for (Place place : placeArrayList) {
                 placeService.savePlace(place);
