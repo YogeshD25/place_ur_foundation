@@ -47,6 +47,32 @@ public class DummyPayloadConfig {
             placeArrayList.add(new Place(1118, "Food Carter", 1L,"Restaurant", 20.104220, 77.132935,
                     "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
 
+            placeArrayList.add(new Place(113, "Jackson Blu 1", 1L,"Restaurant", 20.105549, 77.152677,
+                    "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 2.4f,"Washim"));
+            placeArrayList.add(new Place(1114, "CrazyStory Hut 1", 1L,"Restaurant", 20.104810, 77.142935,
+                    "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.2f,"Washim"));
+            placeArrayList.add(new Place(1115, "Raddison Blu 1", 1L,"Restaurant", 20.104519, 77.133677,
+                    "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 4.9f,"Washim"));
+            placeArrayList.add(new Place(1116, "Devil Pizza 1", 1L,"Restaurant", 20.104720, 77.132635,
+                    "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
+            placeArrayList.add(new Place(1117, "Mac D 1", 1L,"Restaurant", 20.104529, 77.132677,
+                    "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 1.4f,"Washim"));
+            placeArrayList.add(new Place(1118, "Food Carter 1", 1L,"Restaurant", 20.104250, 77.132935,
+                    "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
+
+            placeArrayList.add(new Place(113, "Jackson Blu 2", 1L,"Restaurant", 20.104489, 77.132277,
+                    "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 2.4f,"Washim"));
+            placeArrayList.add(new Place(1114, "CrazyStory Hut 2", 1L,"Restaurant", 20.107810, 77.132035,
+                    "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.2f,"Washim"));
+            placeArrayList.add(new Place(1115, "Raddison Blu 2", 1L,"Restaurant", 20.105519, 77.132177,
+                    "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 4.9f,"Washim"));
+            placeArrayList.add(new Place(1116, "Devil Pizza 2", 1L,"Restaurant", 20.124700, 77.132435,
+                    "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
+            placeArrayList.add(new Place(1117, "Mac D 2", 1L,"Restaurant", 20.114529, 77.132677,
+                    "Best place", "https://i.ibb.co/rbmNQfd/restaurent-1.png", "", 1.4f,"Washim"));
+            placeArrayList.add(new Place(1118, "Food Carter 2", 1L,"Restaurant", 20.104230, 77.132735,
+                    "Best place", "https://i.ibb.co/xLRwbfW/restaurent-2.png", "", 3.7f,"Washim"));
+
             placeArrayList.add(new Place(1113, "Subway", 1L,"Restaurant", 21.1441, 79.0882,
                     "Best place", "https://i.ibb.co/CKmzxDv/restaurent-3.png", "", 2.7f,"Nagpur"));
             placeArrayList.add(new Place(1114, "BBQ", 1L,"Restaurant", 21.1341, 79.0782,
