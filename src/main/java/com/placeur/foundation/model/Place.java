@@ -31,14 +31,20 @@ public class Place {
     @Column
     private long categoryId;
     @Column
-    private String placeLat;
+    private String categoryName;
     @Column
-    private String placeLong;
+    private double placeLat;
+    @Column
+    private double placeLong;
     @Column
     private String placeDescription;
     @Column
     private String placeImageUrl;
     @Column
-    private Float placeRating;
+    private String geoHash;
+    @Column
+    private float placeRating;
+    @Column
+    private String placeCity;
 
 }

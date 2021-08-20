@@ -1,6 +1,7 @@
 package com.placeur.foundation.controller;
 
 
+import com.placeur.foundation.model.Location;
 import com.placeur.foundation.model.Place;
 import com.placeur.foundation.service.PlaceService;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,16 @@ public class PlaceController {
         return placeService.getAllPlace();
     }
 
+    @GetMapping(path = "/byGeoFence")
+    public List<Place> getPlaceUnderLocation(
+            @RequestParam double placeLat,
+            @RequestParam double placeLong,
+            @RequestParam int placeProximity
+    ) {
+        log.info("Inside Place Controller in getPlaceUnderLocation");
+        return placeService.getPlacesBasedOnLocation(placeLat, placeLong, placeProximity);
+    }
+
     @PostMapping
     public void savePlace(@RequestBody Place place) {
         log.info("Inside Place Controller in savePlace");
@@ -56,6 +67,33 @@ public class PlaceController {
                 pageTuts = placeService.placeRepository.findAll(paging);
             else
                 pageTuts = placeService.placeRepository.findByPlaceName(title, paging);
+
+            tutorials = pageTuts.getContent();
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("places", tutorials);
+            response.put("currentPage", pageTuts.getNumber());
+            response.put("totalItems", pageTuts.getTotalElements());
+            response.put("totalPages", pageTuts.getTotalPages());
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/paging")
+    public ResponseEntity<Map<String, Object>> getGeoHashedPlacesByPaging(
+            @RequestBody Location location,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size
+    ) {
+        try {
+            List<Place> tutorials = new ArrayList<>();
+            Pageable paging = PageRequest.of(page, size);
+
+            Page<Place> pageTuts;
+            pageTuts = placeService.getPlacesBasedOnLocationByPaging(location, paging);
 
             tutorials = pageTuts.getContent();
 
