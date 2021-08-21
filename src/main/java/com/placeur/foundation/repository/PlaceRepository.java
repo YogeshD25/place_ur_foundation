@@ -54,4 +54,33 @@ public interface PlaceRepository extends JpaRepository<Place,Long> {
             @Param("nine") String nine,
             Pageable pageable);
 
+
+    @Query("SELECT p FROM Place p WHERE p.placeName= :placeName AND p.geoHash IN(:one,:two,:three,:four,:five,:six,:seven,:eight,:nine)")
+    Page<Place> findRealtyClustersWithinGeoHashByPagingWithPlaceName(
+            @Param("one") String one,
+            @Param("two") String two,
+            @Param("three") String three,
+            @Param("four") String four,
+            @Param("five") String five,
+            @Param("six") String six,
+            @Param("seven") String seven,
+            @Param("eight") String eight,
+            @Param("nine") String nine,
+            @Param("placeName") String placeName,
+            Pageable pageable);
+
+    @Query("SELECT p FROM Place p WHERE p.categoryId= :categoryId AND p.geoHash IN(:one,:two,:three,:four,:five,:six,:seven,:eight,:nine)")
+    Page<Place> findRealtyClustersWithinGeoHashByPagingWithCategoryId(
+            @Param("one") String one,
+            @Param("two") String two,
+            @Param("three") String three,
+            @Param("four") String four,
+            @Param("five") String five,
+            @Param("six") String six,
+            @Param("seven") String seven,
+            @Param("eight") String eight,
+            @Param("nine") String nine,
+            @Param("categoryId") String categoryId,
+            Pageable pageable);
+
 }

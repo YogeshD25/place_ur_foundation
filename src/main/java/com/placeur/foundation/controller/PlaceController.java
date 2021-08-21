@@ -93,7 +93,14 @@ public class PlaceController {
             Pageable paging = PageRequest.of(page, size);
 
             Page<Place> pageTuts;
-            pageTuts = placeService.getPlacesBasedOnLocationByPaging(location, paging);
+            if(location.getPlaceName() !=null){
+                pageTuts = placeService.getPlacesBasedOnLocationPagingByPlaceName(location, paging);
+            } else if (location.getCategoryId()!=null){
+                pageTuts = placeService.getPlacesBasedOnLocationPagingByCategoryId(location, paging);
+            }else{
+                pageTuts = placeService.getPlacesBasedOnLocationByPaging(location, paging);
+            }
+
 
             tutorials = pageTuts.getContent();
 
