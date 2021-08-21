@@ -37,29 +37,6 @@ public class PlaceService {
         return placeRepository.findAll();
     }
 
-    //Naive Approach for Proximity Scanning
-//    public List<Place> getPlacesBasedOnLocationNaive(double placeLat, double placeLong, int radius) {
-//
-//        GeoHash hash = GeoHash.withBitPrecision(placeLat, placeLong, 30);
-//        BoundingBox box = hash.getBoundingBox();
-//
-//        List<Place> list = placeRepository.findRealtyClustersWithinBounds(box.getSouthLatitude(), box.getWestLongitude(),
-//                box.getNorthLatitude(), box.getEastLongitude());
-//
-//        GeoHashCircleQuery query = new GeoHashCircleQuery(new WGS84Point(placeLat, placeLong), radius);
-//
-//        List<Place> placeInRadius = new ArrayList<>();
-//        for (Place place : list) {
-//            if (query.contains(new WGS84Point(
-//                    place.getPlaceLat(),
-//                    place.getPlaceLong()))) {
-//                placeInRadius.add(place);
-//            }
-//        }
-//
-//        return placeInRadius;
-//    }
-
     public List<Place> getPlacesBasedOnLocation(double placeLat, double placeLong, int placeProximity) {
 
         GeoHash hash = GeoHash.withBitPrecision(placeLat, placeLong, 25);
@@ -86,19 +63,6 @@ public class PlaceService {
                 geoHashes[7].toBase32(),
                 hash.toBase32()
         );
-
-
-        //TODO Cross Verification for GeoCircleFenceQuery
-//        GeoHashCircleQuery query = new GeoHashCircleQuery(new WGS84Point(placeLat, placeLong), radius);
-//
-//        List<Place> placeInRadius = new ArrayList<>();
-//        for (Place place : list) {
-//            if (query.contains(new WGS84Point(
-//                    place.getPlaceLat(),
-//                    place.getPlaceLong()))) {
-//                placeInRadius.add(place);
-//            }
-//        }
 
         return list;
     }
@@ -128,6 +92,70 @@ public class PlaceService {
                 geoHashes[6].toBase32(),
                 geoHashes[7].toBase32(),
                 hash.toBase32(),paging
+
+        );
+        return list;
+    }
+
+    public Page<Place> getPlacesBasedOnLocationPagingByPlaceName(Location location, Pageable paging) {
+
+        GeoHash hash = GeoHash.withBitPrecision(location.getPlaceLat(), location.getPlaceLong(), 25);
+        GeoHash[] geoHashes = hash.getAdjacent();
+
+        log.info("Values " + geoHashes[0].toBase32() + "\n" +
+                geoHashes[1].toBase32() + "\n" +
+                geoHashes[2].toBase32() + "\n" +
+                geoHashes[3].toBase32() + "\n" +
+                geoHashes[4].toBase32() + "\n" +
+                geoHashes[5].toBase32() + "\n" +
+                geoHashes[6].toBase32() + "\n" +
+                geoHashes[7].toBase32() + "\n" +
+                hash.toBase32());
+
+        Page<Place> list = placeRepository.findRealtyClustersWithinGeoHashByPagingWithPlaceName(
+                geoHashes[0].toBase32(),
+                geoHashes[1].toBase32(),
+                geoHashes[2].toBase32(),
+                geoHashes[3].toBase32(),
+                geoHashes[4].toBase32(),
+                geoHashes[5].toBase32(),
+                geoHashes[6].toBase32(),
+                geoHashes[7].toBase32(),
+                hash.toBase32(),
+                location.getPlaceName(),
+                paging
+
+        );
+        return list;
+    }
+
+    public Page<Place> getPlacesBasedOnLocationPagingByCategoryId(Location location, Pageable paging) {
+
+        GeoHash hash = GeoHash.withBitPrecision(location.getPlaceLat(), location.getPlaceLong(), 25);
+        GeoHash[] geoHashes = hash.getAdjacent();
+
+        log.info("Values " + geoHashes[0].toBase32() + "\n" +
+                geoHashes[1].toBase32() + "\n" +
+                geoHashes[2].toBase32() + "\n" +
+                geoHashes[3].toBase32() + "\n" +
+                geoHashes[4].toBase32() + "\n" +
+                geoHashes[5].toBase32() + "\n" +
+                geoHashes[6].toBase32() + "\n" +
+                geoHashes[7].toBase32() + "\n" +
+                hash.toBase32());
+
+        Page<Place> list = placeRepository.findRealtyClustersWithinGeoHashByPagingWithCategoryId(
+                geoHashes[0].toBase32(),
+                geoHashes[1].toBase32(),
+                geoHashes[2].toBase32(),
+                geoHashes[3].toBase32(),
+                geoHashes[4].toBase32(),
+                geoHashes[5].toBase32(),
+                geoHashes[6].toBase32(),
+                geoHashes[7].toBase32(),
+                hash.toBase32(),
+                location.getCategoryId(),
+                paging
 
         );
         return list;

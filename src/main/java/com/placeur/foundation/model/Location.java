@@ -12,5 +12,7 @@ public class Location {
     double placeLat;
     double placeLong;
     int placeProximity;
+    String placeName;
+    String categoryId;
 
 }
