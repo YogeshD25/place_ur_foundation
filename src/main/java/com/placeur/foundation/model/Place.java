@@ -27,7 +27,6 @@ public class Place {
             strategy = GenerationType.SEQUENCE,
             generator = "place_sequence"
     )
-    @JsonIgnore
     private long placeId;
     @Column
     private String placeName;

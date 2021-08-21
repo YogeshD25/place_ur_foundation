@@ -124,6 +124,7 @@ public class DummyPayloadConfig {
 
 
             ratingService.saveCategory(new Rating(1L,1L,"7385787937","Awesome place to visit",4.1f, new Date(System.currentTimeMillis())));
+            ratingService.saveCategory(new Rating(2L,1L,"7385787937","Awesome place to visit Must have visit the place as it is cool as GTA video game",4.1f, new Date(System.currentTimeMillis())));
         };
     }
 }

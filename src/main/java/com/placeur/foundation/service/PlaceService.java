@@ -154,7 +154,7 @@ public class PlaceService {
                 geoHashes[6].toBase32(),
                 geoHashes[7].toBase32(),
                 hash.toBase32(),
-                location.getCategoryId(),
+                Long.parseLong(location.getCategoryId()),
                 paging
 
         );

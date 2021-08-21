@@ -4,9 +4,17 @@ import com.placeur.foundation.model.Rating;
 import com.placeur.foundation.service.RatingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/rating")
@@ -20,10 +28,29 @@ public class RatingController {
         this.ratingService = ratingService;
     }
 
-    @GetMapping
-    public List<Rating> getAllRatingByPlaceId(@RequestParam long id) {
-        log.info("Inside Rating Controller in getAllRatingByPlaceId");
-        return ratingService.getAllRatingByPlaceId(id);
+    @PostMapping("/paging")
+    public ResponseEntity<Map<String, Object>> getAllRatingByPaging(
+            @RequestParam long placeId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size
+    ) {
+        try {
+            List<Rating> ratingList = new ArrayList<>();
+            Pageable paging = PageRequest.of(page, size);
+            Page<Rating> pageTuts;
+            pageTuts = ratingService.getAllRatingByPlaceId(placeId, paging);
+            ratingList = pageTuts.getContent();
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("rating", ratingList);
+            response.put("currentPage", pageTuts.getNumber());
+            response.put("totalItems", pageTuts.getTotalElements());
+            response.put("totalPages", pageTuts.getTotalPages());
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping

@@ -80,7 +80,7 @@ public interface PlaceRepository extends JpaRepository<Place,Long> {
             @Param("seven") String seven,
             @Param("eight") String eight,
             @Param("nine") String nine,
-            @Param("categoryId") String categoryId,
+            @Param("categoryId") long categoryId,
             Pageable pageable);
 
 }
