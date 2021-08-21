@@ -112,7 +112,7 @@ public class DummyPayloadConfig {
             categoryArrayList.add(new Category(2L, "Coffee Shops",
                     "https://i.ibb.co/rydknC6/Coffee-Shops.jpg", "https://i.ibb.co/2s37d74/coffee.png"));
             categoryArrayList.add(new Category(3L, "Shopping",
-                    "https://i.ibb.co/vhkg5tb/Shopping.jpg", "https://i.ibb.co/ysDP8cs/shopping.png"));
+                    "https://i.ibb.co/DC2P1Hr/Shopping.jpg", "https://i.ibb.co/ysDP8cs/shopping.png"));
             categoryArrayList.add(new Category(4L, "Pubs",
                     "https://i.ibb.co/Tm2HGgk/pubs.jpg", "https://i.ibb.co/Q9VbhgW/pubs.png"));
             categoryArrayList.add(new Category(5L, "Bars",
