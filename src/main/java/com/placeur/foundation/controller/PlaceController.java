@@ -33,12 +33,15 @@ public class PlaceController {
     }
 
     @PostMapping(path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
-    public Map<String, String> uploadFile(@RequestPart(value = "file", required = true) MultipartFile files,
+    public ResponseEntity<String> uploadFile(@RequestPart(value = "file", required = true) MultipartFile files,
                                           @RequestPart(value = "placeId", required = true) String placeId)  {
         String name = placeService.uploadPlaceImage(files, "prefix", placeId);
-        Map<String, String> result = new HashMap<>();
-        result.put("image", name);
-        return result;
+
+        if(name!=null){
+            return new ResponseEntity<>("Image Uploaded Successfully", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("Image Upload Failed", HttpStatus.EXPECTATION_FAILED);
+        }
     }
 
     @GetMapping

@@ -32,12 +32,14 @@ public class RatingController {
 
 
     @PostMapping(path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
-    public Map<String, String> uploadFile(@RequestPart(value = "file", required = true) MultipartFile[] files,
+    public ResponseEntity<String> uploadFile(@RequestPart(value = "file", required = true) MultipartFile[] files,
                                           @RequestPart(value = "ratingId", required = true) String ratingId)  {
         String name = ratingService.uploadRatingImages(files, "prefix", ratingId);
-        Map<String, String> result = new HashMap<>();
-        result.put("images", name);
-        return result;
+        if(name!=null){
+            return new ResponseEntity<>("Image Uploaded Successfully", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("Image Upload Failed", HttpStatus.EXPECTATION_FAILED);
+        }
     }
 
     @PostMapping("/paging")
