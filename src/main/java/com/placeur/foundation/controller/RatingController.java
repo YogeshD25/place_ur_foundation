@@ -8,8 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +28,16 @@ public class RatingController {
     @Autowired
     public RatingController(RatingService ratingService) {
         this.ratingService = ratingService;
+    }
+
+
+    @PostMapping(path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
+    public Map<String, String> uploadFile(@RequestPart(value = "file", required = true) MultipartFile[] files,
+                                          @RequestPart(value = "ratingId", required = true) String ratingId)  {
+        String name = ratingService.uploadRatingImages(files, "prefix", ratingId);
+        Map<String, String> result = new HashMap<>();
+        result.put("images", name);
+        return result;
     }
 
     @PostMapping("/paging")
@@ -54,7 +66,7 @@ public class RatingController {
     }
 
     @PostMapping
-    public void savePlace(@RequestBody Rating rating) {
+    public void saveRating(@RequestBody Rating rating) {
         log.info("Inside Rating Controller in saveRating");
         ratingService.saveCategory(rating);
     }

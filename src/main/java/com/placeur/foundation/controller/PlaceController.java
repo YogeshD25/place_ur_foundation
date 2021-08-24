@@ -10,8 +10,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +30,15 @@ public class PlaceController {
     @Autowired
     public PlaceController(PlaceService placeService) {
         this.placeService = placeService;
+    }
+
+    @PostMapping(path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
+    public Map<String, String> uploadFile(@RequestPart(value = "file", required = true) MultipartFile files,
+                                          @RequestPart(value = "placeId", required = true) String placeId)  {
+        String name = placeService.uploadPlaceImage(files, "prefix", placeId);
+        Map<String, String> result = new HashMap<>();
+        result.put("image", name);
+        return result;
     }
 
     @GetMapping
@@ -93,9 +104,7 @@ public class PlaceController {
             Pageable paging = PageRequest.of(page, size);
 
             Page<Place> pageTuts;
-            if(location.getPlaceName() !=null){
-                pageTuts = placeService.getPlacesBasedOnLocationPagingByPlaceName(location, paging);
-            } else if (location.getCategoryId()!=null){
+            if (location.getCategoryId()!=null){
                 pageTuts = placeService.getPlacesBasedOnLocationPagingByCategoryId(location, paging);
             }else{
                 pageTuts = placeService.getPlacesBasedOnLocationByPaging(location, paging);
@@ -115,5 +124,14 @@ public class PlaceController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping(path = "/searchPlace")
+    public List<Place> searchPlaceByName(
+            @RequestBody Location location
+    ) {
+        log.info("Inside Place Controller in getSearchQuery for Place Name");
+        return placeService.getPlacesBasedOnLocationByPlaceName(location);
+    }
+
 
 }

@@ -2,16 +2,21 @@ package com.placeur.foundation.service;
 
 
 import ch.hsr.geohash.GeoHash;
+import com.azure.storage.blob.BlobClientBuilder;
 import com.placeur.foundation.model.Location;
 import com.placeur.foundation.model.Place;
 import com.placeur.foundation.repository.PlaceRepository;
+import com.placeur.foundation.utility.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -21,8 +26,29 @@ public class PlaceService {
     public PlaceRepository placeRepository;
 
     @Autowired
+    BlobClientBuilder client;
+
+    @Autowired
     public PlaceService(PlaceRepository placeRepository) {
         this.placeRepository = placeRepository;
+    }
+
+    public String uploadPlaceImage(MultipartFile file, String prefixName, String placeId) {
+        if(file != null && file.getSize() > 0) {
+            try {
+                //implement your own file name logic.
+                String fileName = prefixName+ UUID.randomUUID().toString() +file.getOriginalFilename();
+                client.blobName(fileName).buildClient().upload(file.getInputStream(),file.getSize());
+
+                Place place = placeRepository.getById(Long.parseLong(placeId));
+                place.setPlaceImageUrl(Constants.AZURE_STORAGE_PREDECESSOR_URL + fileName);
+                placeRepository.save(place);
+                return fileName;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     public void savePlace(Place place) {
@@ -97,7 +123,7 @@ public class PlaceService {
         return list;
     }
 
-    public Page<Place> getPlacesBasedOnLocationPagingByPlaceName(Location location, Pageable paging) {
+    public List<Place> getPlacesBasedOnLocationByPlaceName(Location location) {
 
         GeoHash hash = GeoHash.withBitPrecision(location.getPlaceLat(), location.getPlaceLong(), 25);
         GeoHash[] geoHashes = hash.getAdjacent();
@@ -112,7 +138,7 @@ public class PlaceService {
                 geoHashes[7].toBase32() + "\n" +
                 hash.toBase32());
 
-        Page<Place> list = placeRepository.findRealtyClustersWithinGeoHashByPagingWithPlaceName(
+        List<Place> list = placeRepository.findRealtyClustersWithinGeoHashByPlaceName(
                 geoHashes[0].toBase32(),
                 geoHashes[1].toBase32(),
                 geoHashes[2].toBase32(),
@@ -122,9 +148,7 @@ public class PlaceService {
                 geoHashes[6].toBase32(),
                 geoHashes[7].toBase32(),
                 hash.toBase32(),
-                location.getPlaceName(),
-                paging
-
+                location.getPlaceName()
         );
         return list;
     }

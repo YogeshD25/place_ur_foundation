@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -40,5 +41,7 @@ public class Rating {
     @Column
     @JsonIgnore
     private Date created_at;
+    @Column(length = 1000)
+    private String reviewImages;
 
 }

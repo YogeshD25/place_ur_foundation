@@ -56,7 +56,7 @@ public interface PlaceRepository extends JpaRepository<Place,Long> {
 
 
     @Query("SELECT p FROM Place p WHERE p.placeName= :placeName AND p.geoHash IN(:one,:two,:three,:four,:five,:six,:seven,:eight,:nine)")
-    Page<Place> findRealtyClustersWithinGeoHashByPagingWithPlaceName(
+    List<Place> findRealtyClustersWithinGeoHashByPlaceName(
             @Param("one") String one,
             @Param("two") String two,
             @Param("three") String three,
@@ -66,8 +66,7 @@ public interface PlaceRepository extends JpaRepository<Place,Long> {
             @Param("seven") String seven,
             @Param("eight") String eight,
             @Param("nine") String nine,
-            @Param("placeName") String placeName,
-            Pageable pageable);
+            @Param("placeName") String placeName);
 
     @Query("SELECT p FROM Place p WHERE p.categoryId= :categoryId AND p.geoHash IN(:one,:two,:three,:four,:five,:six,:seven,:eight,:nine)")
     Page<Place> findRealtyClustersWithinGeoHashByPagingWithCategoryId(
