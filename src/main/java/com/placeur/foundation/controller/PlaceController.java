@@ -128,7 +128,7 @@ public class PlaceController {
         }
     }
 
-    @GetMapping(path = "/searchPlace")
+    @PostMapping(path = "/searchPlace")
     public List<Place> searchPlaceByName(
             @RequestBody Location location
     ) {
