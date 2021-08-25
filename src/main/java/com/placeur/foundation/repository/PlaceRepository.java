@@ -55,7 +55,7 @@ public interface PlaceRepository extends JpaRepository<Place,Long> {
             Pageable pageable);
 
 
-    @Query("SELECT p FROM Place p WHERE p.placeName= :placeName AND p.geoHash IN(:one,:two,:three,:four,:five,:six,:seven,:eight,:nine)")
+    @Query("SELECT p FROM Place p WHERE LOWER(p.placeName) LIKE %:placeName% AND p.geoHash IN(:one,:two,:three,:four,:five,:six,:seven,:eight,:nine)")
     List<Place> findRealtyClustersWithinGeoHashByPlaceName(
             @Param("one") String one,
             @Param("two") String two,
