@@ -73,4 +73,10 @@ public class RatingController {
         return ratingService.saveCategory(rating);
     }
 
+    @GetMapping(value = "/limit")
+    public List<Rating> getPlaceLimitedRating(@RequestParam long placeId) {
+        log.info("Inside Rating Controller in getPlaceLimitedRating");
+        return ratingService.getPlaceLimitedRating(placeId);
+    }
+
 }

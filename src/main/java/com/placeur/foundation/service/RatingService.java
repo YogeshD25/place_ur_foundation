@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -60,4 +61,8 @@ public class RatingService {
     }
 
 
+    public List<Rating> getPlaceLimitedRating(Long placeId) {
+        log.info("Inside Rating Service for getting all Rating limited 4 record By Id");
+        return ratingRepository.findRatingLimitedByPlaceId(placeId);
+    }
 }
