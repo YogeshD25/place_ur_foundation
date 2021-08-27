@@ -28,9 +28,9 @@ public class RatingService {
         this.ratingRepository = ratingRepository;
     }
 
-    public void saveCategory(Rating rating) {
+    public Rating saveCategory(Rating rating) {
         log.info("Inside Rating Service for Saving Rating");
-        ratingRepository.save(rating);
+        return ratingRepository.save(rating);
     }
 
     public Page<Rating> getAllRatingByPlaceId(long id, Pageable page) {

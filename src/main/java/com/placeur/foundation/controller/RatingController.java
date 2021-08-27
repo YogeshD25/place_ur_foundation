@@ -68,9 +68,9 @@ public class RatingController {
     }
 
     @PostMapping
-    public void saveRating(@RequestBody Rating rating) {
+    public Rating saveRating(@RequestBody Rating rating) {
         log.info("Inside Rating Controller in saveRating");
-        ratingService.saveCategory(rating);
+        return ratingService.saveCategory(rating);
     }
 
 }
