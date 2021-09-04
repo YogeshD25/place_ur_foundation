@@ -61,9 +61,9 @@ public class PlaceController {
     }
 
     @PostMapping
-    public void savePlace(@RequestBody Place place) {
+    public Place savePlace(@RequestBody Place place) {
         log.info("Inside Place Controller in savePlace");
-        placeService.savePlace(place);
+        return placeService.savePlace(place);
     }
 
     @GetMapping("/paging")

@@ -51,11 +51,11 @@ public class PlaceService {
         return null;
     }
 
-    public void savePlace(Place place) {
+    public Place savePlace(Place place) {
         log.info("Inside Place Service for Saving place");
         GeoHash hash = GeoHash.withBitPrecision(place.getPlaceLat(), place.getPlaceLong(), 25);
         place.setGeoHash(hash.toBase32());
-        placeRepository.save(place);
+       return placeRepository.save(place);
     }
 
     public List<Place> getAllPlace() {
